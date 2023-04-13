@@ -57,8 +57,8 @@ jobs:
         script: |
           sudo docker pull yuraskv/api_yamdb
           sudo docker stop $(sudo docker ps -a -q)
-          sudo docker run --rm -d -p 5000:5000 yuraskv/api_yamdb
-
+          sudo docker run --rm -d -p 5000:5000 -f api_yamdb/Dockerfile yuraskv/api_yamdb
+          
   send_message:
     runs-on: ubuntu-latest
     needs: deploy
