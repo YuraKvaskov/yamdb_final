@@ -80,22 +80,22 @@ mkdir nginx
 ```
 Соберите статические файлы (статику):
 ```
-docker-compose exec web python manage.py collectstatic --no-input
+sudo docker-compose exec web python manage.py collectstatic --no-input
 ```
 Примените миграции:
 ```
-(опционально) docker-compose exec web python manage.py makemigrations
-docker-compose exec web python manage.py migrate --noinput
+(опционально) sudo docker-compose exec web python manage.py makemigrations
+sudo docker-compose exec web python manage.py migrate --noinput
 ```
 Создайте суперпользователя:
 ```
-docker-compose exec web python manage.py createsuperuser
+sudo docker-compose exec web python manage.py createsuperuser
 ```
 При необходимости наполните базу тестовыми данными из ../yamdb_final/infra/:
 ```
-docker exec -i infra_web_1 python manage.py loaddata --format=json - < fixtures.json
+sudo docker exec -i infra_web_1 python manage.py loaddata --format=json - < fixtures.json
 или
-docker-compose exec web python manage.py loaddata fixtures.json
+sudo docker-compose exec web python manage.py loaddata fixtures.json
 ```
 Чтобы выполнить вход в контейнер:
 ```
