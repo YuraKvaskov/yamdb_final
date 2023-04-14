@@ -1,11 +1,11 @@
-FROM python:3.7-slim 
+FROM python:3.7-slim
 
-WORKDIR /app 
+WORKDIR /app
 
-COPY ./ . 
+COPY requirements.txt /app
 
-RUN pip3 install -r api_yamdb/requirements.txt --no-cache-dir 
+RUN pip3 install -r /app/requirements.txt --no-cache-dir
 
-RUN cd api_yamdb
+COPY ./ /app
 
-CMD ["gunicorn", "api_yamdb.wsgi:application", "--bind", "0:8000" ] 
+CMD ["gunicorn", "api_yamdb.wsgi:application", "--bind", "0:8000"]
