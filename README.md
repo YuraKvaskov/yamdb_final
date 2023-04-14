@@ -1,15 +1,14 @@
 # CI и CD проекта api_yamdb
 <image src='https://github.com/YuraKvaskov/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg'>
 
-# CI и CD проекта api_yamdb
-
 ## Проект включает в себя 4 шага:
 - Tests: Проверка кода на соответствие стандарту PEP8 (с помощью пакета flake8) и запуск pytest. Дальнейшие шаги выполнятся только если push был в ветку master или main.
 - Build_and_push_to_docker_hub: Сборка и доставка докер-образов на Docker Hub
 - Deploy: автоматический деплой на боевой сервер при пуше в главную ветку main
 - Send_message: отправление сообщения в Telegram
 
-#Как запустить проект локально:
+# Как запустить проект локально:
+
 Клонируйте репозиторий и перейдите в него в командной строке:
 ```
 git clone git@github.com:YuraKvaskov/yamdb_final.git
@@ -48,7 +47,7 @@ python manage.py runserver
 
 Документация API YaMDb доступна по адресу http://127.0.0.1:8000/redoc/
 
-#Как развернуть проект на сервере:
+# Как развернуть проект на сервере:
 
 Установите соединение с сервером:
 ```
@@ -112,6 +111,4 @@ python3 manage.py shell
 >>> ContentType.objects.all().delete()
 >>> quit()
 python manage.py loaddata infra/fixtures.json
-```
-
 
