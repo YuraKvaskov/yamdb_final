@@ -50,61 +50,73 @@ python manage.py runserver
 # Как развернуть проект на сервере:
 
 Установите соединение с сервером:
+
 ```
 ssh username@server_address
 ```
 Проверьте статус nginx:
+
 ```
 sudo service nginx status
 ```
 Если nginx запущен, остановите его:
+
 ```
 sudo systemctl stop nginx
 ```
 Установите Docker и Docker-compose:
+
 ```
 sudo apt install docker.io
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 Проверьте корректность установки Docker-compose:
+
 ```
 sudo  docker-compose --version
 ```
 Создайте папку nginx:
+
 ```
 mkdir nginx
 ```
 После деплоя:
-```
 Соберите статические файлы (статику):
+
 ```
 sudo docker-compose exec web python manage.py collectstatic --no-input
 ```
 Примените миграции:
+
 ```
 (опционально) sudo docker-compose exec web python manage.py makemigrations
 sudo docker-compose exec web python manage.py migrate --noinput
 ```
 Создайте суперпользователя:
+
 ```
 sudo docker-compose exec web python manage.py createsuperuser
 ```
 При необходимости наполните базу тестовыми данными из ../yamdb_final/infra/:
+
 ```
 sudo docker exec -i infra_web_1 python manage.py loaddata --format=json - < fixtures.json
 или
 sudo docker-compose exec web python manage.py loaddata fixtures.json
 ```
 Чтобы выполнить вход в контейнер:
+
 ```
 sudo docker exec -it <CONTAINER_ID> bash
 ```
 Внутри контейнера выполните миграции:
+
 ```
 python manage.py migrate
 ```
 При необходимости наполните базу данных начальными тестовыми данными:
+
 ```
 python3 manage.py shell
 >>> from django.contrib.contenttypes.models import ContentType
