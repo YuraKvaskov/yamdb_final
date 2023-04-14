@@ -10,7 +10,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', default='t+il@9$!pqihdfmu6&9oik*p*ya37b0wvm
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['158.160.60.15']
 # Application definition
 
 INSTALLED_APPS = [
